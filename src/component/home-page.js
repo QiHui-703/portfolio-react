@@ -37,6 +37,11 @@ const useStyles = makeStyles({
     fontWeight: "700",
     letterSpacing: "0.2rem",
   },
+  hyperlinkStyles: {
+    textDecoration: "none",
+    fontWeight: "600",
+    paddingLeft: "10px",
+  },
 });
 
 const spring = {
@@ -95,8 +100,11 @@ function HomePage() {
                     <p>{item.quote}</p>
                   </CardContent>
                   <CardActions>
-                    <Link to={item.addressURL}>
-                      Click here for more details
+                    <Link
+                      to={item.addressURL}
+                      className={classes.hyperlinkStyles}
+                    >
+                      More
                     </Link>
                   </CardActions>
                 </Card>

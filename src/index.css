@@ -3,6 +3,7 @@ body {
   /* font-family: "Nova Mono", monospace; */
   /* font-family: "Overpass", sans-serif; */
   font-family: "Roboto Condensed", sans-serif;
+  letter-spacing: 0.1rem;
   background-color: #fff;
   color: #38302e;
 }
