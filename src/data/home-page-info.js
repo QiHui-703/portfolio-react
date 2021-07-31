@@ -3,13 +3,13 @@ const homePageInfo = [
     id: 1,
     title: "About•me",
     quote: "Penangite 🌏 Malaysian",
-    addressURL: "/about-me",
+    addressURL: "/aboutme",
   },
   {
     id: 2,
     title: "Work•Experience",
     quote: "Malaysia ✈ Singapore",
-    addressURL: "/work-experience",
+    addressURL: "/workexperience",
   },
   {
     id: 3,

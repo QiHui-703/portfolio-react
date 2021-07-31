@@ -72,6 +72,7 @@ function HomePage() {
         {homePageInfo.map((item, i) => {
           return (
             <Grid
+              key={item.id}
               item
               xs={12}
               md={6}

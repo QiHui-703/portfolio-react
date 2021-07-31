@@ -1,19 +1,51 @@
+import { createTheme, ThemeProvider } from "@material-ui/core/styles";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import "./App.css";
+import AboutMe from "./component/about-me";
+import Education from "./component/education";
 import HomePage from "./component/home-page";
 import LandingPage from "./component/landing-page";
+import Projects from "./component/projects";
+import WorkExperience from "./component/work-experience";
+import homePageInfo from "./data/home-page-info";
+import Header from "./component/header";
 
 function App() {
+  const theme = createTheme({
+    typography: {
+      fontFamily: "Roboto Condensed",
+      letterSpacing: "0.1rem",
+    },
+  });
+
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/">
-          <LandingPage />
-          <HomePage />
-        </Route>
-      </Switch>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <LandingPage />
+            <HomePage />
+          </Route>
+          <Route path="/aboutme">
+            <Header info={homePageInfo} />
+            <AboutMe />
+          </Route>
+          <Route path="/workexperience">
+            <Header info={homePageInfo} />
+            <WorkExperience />
+          </Route>
+          <Route path="/education">
+            <Header info={homePageInfo} />
+            <Education />
+          </Route>
+          <Route path="/projects">
+            <Header info={homePageInfo} />
+            <Projects />
+          </Route>
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
 }
 
