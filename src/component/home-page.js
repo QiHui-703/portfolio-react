@@ -36,6 +36,10 @@ const useStyles = makeStyles({
     fontFamily: "Overpass",
     fontWeight: "700",
     letterSpacing: "0.2rem",
+    color: "#764E05",
+  },
+  pText: {
+    fontWeight: "500",
   },
   hyperlinkStyles: {
     textDecoration: "none",
@@ -92,22 +96,16 @@ function HomePage() {
                   justifyContent: "center",
                 }}
               >
-                <Card className={classes.root}>
-                  <CardContent>
-                    <Typography variant="h5" className={classes.pos}>
-                      {item.title}
-                    </Typography>
-                    <p>{item.quote}</p>
-                  </CardContent>
-                  <CardActions>
-                    <Link
-                      to={item.addressURL}
-                      className={classes.hyperlinkStyles}
-                    >
-                      More
-                    </Link>
-                  </CardActions>
-                </Card>
+                <Link to={item.addressURL} className={classes.hyperlinkStyles}>
+                  <Card className={classes.root}>
+                    <CardContent>
+                      <Typography variant="h5" className={classes.pos}>
+                        {item.title}
+                      </Typography>
+                      <p className={classes.pText}>{item.quote}</p>
+                    </CardContent>
+                  </Card>
+                </Link>
               </motion.div>
             </Grid>
           );
