@@ -68,7 +68,6 @@ function HomePage() {
           margin: 0,
         }}
       >
-        {/* style={{ backgroundColor: "black" }} */}
         {homePageInfo.map((item, i) => {
           return (
             <Grid

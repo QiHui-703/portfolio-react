@@ -5,13 +5,9 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
-import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
 import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles((theme) => ({
@@ -46,6 +42,30 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#fff",
     margin: "7px",
     borderRadius: "7px",
+  },
+  mobileMenuItem: {
+    color: "#000",
+    textDecoration: "none",
+    margin: "7px",
+    padding: "6px 3px 0",
+  },
+  mobileMenuItemSelected: {
+    color: "#fff",
+    textDecoration: "none",
+    padding: "6px 3px 0",
+    backgroundColor: "#6E877F",
+    margin: "7px",
+    borderRadius: "7px",
+  },
+  mobileLink: {
+    textDecoration: "none",
+  },
+  mobileHomeMenuItem: {
+    paddingLeft: "7px",
+    color: "#6E877F",
+  },
+  desktopHomeMenuItem: {
+    color: "black",
   },
 }));
 
@@ -94,33 +114,32 @@ export default function Header(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
+      {props.info.map((item) => (
+        <Link
+          onClick={(e) => {
+            handleClick(item.addressURL, e);
+          }}
+          key={item.id}
+          to={item.addressURL}
+          className={classes.mobileLink}
         >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+          <MenuItem
+            className={
+              currentPath === item.addressURL
+                ? classes.mobileMenuItemSelected
+                : classes.mobileMenuItem
+            }
+          >
+            {item.title}
+          </MenuItem>
+        </Link>
+      ))}
+      <Link to="/" className={classes.mobileLink}>
+        <MenuItem className={classes.mobileMenuItem}>
+          <HomeIcon className={classes.mobileHomeMenuItem} />
+          <span className={classes.mobileHomeMenuItem}>Home</span>
+        </MenuItem>
+      </Link>
     </Menu>
   );
 
@@ -155,7 +174,7 @@ export default function Header(props) {
               </Link>
             ))}
             <Link to="/" className={classes.desktopMenuItem}>
-              <HomeIcon />
+              <HomeIcon className={classes.desktopHomeMenuItem} />
             </Link>
           </div>
 
