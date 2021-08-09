@@ -1,7 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { Box, Card, Grid, Typography } from "@material-ui/core";
 import { motion } from "framer-motion";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import homePageInfo from "../data/home-page-info";
 import { Link } from "react-router-dom";

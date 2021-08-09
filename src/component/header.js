@@ -9,10 +9,16 @@ import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
 import HomeIcon from "@material-ui/icons/Home";
+import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
+  },
+  appBarCustomStyles: {
+    display: "fixed",
+    top: 0,
+    color: "#000",
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -30,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   desktopMenuItem: {
-    color: "#fff",
+    color: "#000",
     textDecoration: "none",
     margin: "7px",
     padding: "6px 3px 0",
@@ -50,10 +56,10 @@ const useStyles = makeStyles((theme) => ({
     padding: "6px 3px 0",
   },
   mobileMenuItemSelected: {
-    color: "#fff",
+    color: "#000",
     textDecoration: "none",
     padding: "6px 3px 0",
-    backgroundColor: "#6E877F",
+    backgroundColor: "#F7B53B",
     margin: "7px",
     borderRadius: "7px",
   },
@@ -62,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
   mobileHomeMenuItem: {
     paddingLeft: "7px",
-    color: "#6E877F",
+    color: "#F7B53B",
   },
   desktopHomeMenuItem: {
     color: "black",
@@ -100,7 +106,8 @@ export default function Header(props) {
 
   function handleClick(url, e) {
     setCurrentPath(url);
-    setTitle(e.target.text);
+    console.log(e.target.innerText);
+    setTitle(e.target.innerText);
   }
 
   const mobileMenuId = "primary-search-account-menu-mobile";
@@ -146,50 +153,52 @@ export default function Header(props) {
   return (
     <div className={classes.grow}>
       <AppBar
-        position="static"
         elevation={0}
-        style={{ backgroundColor: "#6E877F" }}
+        style={{ backgroundColor: "#F7B53B" }}
+        className={classes.appBarCustomStyles}
       >
-        <Toolbar>
-          <Typography className={classes.title} variant="h5" noWrap>
-            {title}
-          </Typography>
+        <Container maxWidth="lg">
+          <Toolbar style={{ padding: 0 }}>
+            <Typography variant="h5" noWrap>
+              {title}
+            </Typography>
 
-          <div className={classes.grow} />
-          <div className={classes.sectionDesktop}>
-            {props.info.map((item) => (
-              <Link
-                onClick={(e) => {
-                  handleClick(item.addressURL, e);
-                }}
-                key={item.id}
-                to={item.addressURL}
-                className={
-                  currentPath === item.addressURL
-                    ? classes.desktopMenuItemSelected
-                    : classes.desktopMenuItem
-                }
-              >
-                {item.title}
+            <div className={classes.grow} />
+            <div className={classes.sectionDesktop}>
+              {props.info.map((item) => (
+                <Link
+                  onClick={(e) => {
+                    handleClick(item.addressURL, e);
+                  }}
+                  key={item.id}
+                  to={item.addressURL}
+                  className={
+                    currentPath === item.addressURL
+                      ? classes.desktopMenuItemSelected
+                      : classes.desktopMenuItem
+                  }
+                >
+                  {item.title}
+                </Link>
+              ))}
+              <Link to="/" className={classes.desktopMenuItem}>
+                <HomeIcon className={classes.desktopHomeMenuItem} />
               </Link>
-            ))}
-            <Link to="/" className={classes.desktopMenuItem}>
-              <HomeIcon className={classes.desktopHomeMenuItem} />
-            </Link>
-          </div>
+            </div>
 
-          <div className={classes.sectionMobile}>
-            <IconButton
-              aria-label="show more"
-              aria-controls={mobileMenuId}
-              aria-haspopup="true"
-              onClick={handleMobileMenuOpen}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-          </div>
-        </Toolbar>
+            <div className={classes.sectionMobile}>
+              <IconButton
+                aria-label="show more"
+                aria-controls={mobileMenuId}
+                aria-haspopup="true"
+                onClick={handleMobileMenuOpen}
+                color="inherit"
+              >
+                <MenuIcon />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </Container>
       </AppBar>
       {renderMobileMenu}
     </div>

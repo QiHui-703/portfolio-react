@@ -10,6 +10,7 @@ import Projects from "./component/projects";
 import WorkExperience from "./component/work-experience";
 import homePageInfo from "./data/home-page-info";
 import Header from "./component/header";
+import Footer from "./component/footer";
 
 function App() {
   const theme = createTheme({
@@ -30,18 +31,22 @@ function App() {
           <Route path="/aboutme">
             <Header info={homePageInfo} />
             <AboutMe />
+            <Footer />
           </Route>
           <Route path="/workexperience">
             <Header info={homePageInfo} />
             <WorkExperience />
+            <Footer />
           </Route>
           <Route path="/education">
             <Header info={homePageInfo} />
             <Education />
+            <Footer />
           </Route>
           <Route path="/projects">
             <Header info={homePageInfo} />
             <Projects />
+            <Footer />
           </Route>
         </Switch>
       </Router>

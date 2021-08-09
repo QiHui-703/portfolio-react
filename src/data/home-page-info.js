@@ -7,7 +7,7 @@ const homePageInfo = [
   },
   {
     id: 2,
-    title: "Work•Experience",
+    title: "Work•experience",
     quote: "Malaysia ✈ Singapore",
     addressURL: "/workexperience",
   },
