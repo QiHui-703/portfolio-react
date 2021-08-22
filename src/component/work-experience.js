@@ -12,14 +12,13 @@ const useStyles = makeStyles((theme) => ({
   containerStyle: {
     display: "flex",
     flexDirection: "column",
-    alignSelf: "center",
+    alignItems: "center",
   },
   nestedDivStyle: {
     textAlign: "justify",
-    maxWidth: "60rem",
+    maxWidth: "50rem",
     display: "flex",
     flexDirection: "column",
-    alignSelf: "center",
     marginTop: "5vh",
     marginBottom: "5vh",
   },
@@ -33,37 +32,62 @@ function WorkExperience() {
       <Container className={classes.containerStyle}>
         {workExperienceInfo.map((item, index) => (
           <div className={classes.nestedDivStyle}>
-            <h1>{item.companyName}</h1>
-            <h2>{item.jobTitle}</h2>
+            <img
+              src={require(`../images/${item.logoReference}`).default}
+              alt="company logo"
+              style={{ maxWidth: "250px" }}
+            />
+            <p>{item.logo}</p>
+            <h2>{item.companyName}</h2>
+            <h3>{item.jobTitle}</h3>
             <h3>{item.duration}</h3>
-            <p>Technical Skills</p>
-            <p>
-              {item.technicalSkills.map((technicalSkillsListItem, index) => (
-                <li>{technicalSkillsListItem}</li>
-              ))}
-            </p>
-            <p>Job Responsibilities</p>
-            <p>
-              {item.jobResponsibilities.map(
-                (jobResponsibilitiesListItem, index) => (
-                  <li>{jobResponsibilitiesListItem}</li>
-                )
-              )}
-            </p>
-            <p>Key Achievements</p>
-            <p>
-              {item.keyAchievement.map((keyAchievementListItem, index) => (
-                <li>{keyAchievementListItem}</li>
-              ))}
-            </p>
-            <p>Volunteering Activity</p>
-            <p>
-              {item.nonWorkRelatedVolunteeringActivities.map(
-                (nonWorkRelatedVolunteeringActivitiesListItem, index) => (
-                  <li>{nonWorkRelatedVolunteeringActivitiesListItem}</li>
-                )
-              )}
-            </p>
+            {item.technicalSkills ? (
+              <div>
+                <p>Technical Skills</p>
+                {item.technicalSkills.map((technicalSkillsListItem, index) => (
+                  <li>{technicalSkillsListItem}</li>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+
+            {item.jobResponsibilities ? (
+              <div>
+                <p>Job Responsibilities</p>
+                {item.jobResponsibilities.map(
+                  (jobResponsibilitiesListItem, index) => (
+                    <li>{jobResponsibilitiesListItem}</li>
+                  )
+                )}
+              </div>
+            ) : (
+              ""
+            )}
+
+            {item.keyAchievement ? (
+              <div>
+                <p>Key Achievements</p>
+                {item.keyAchievement.map((keyAchievement, index) => (
+                  <li>{keyAchievement}</li>
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+
+            {item.nonWorkRelatedVolunteeringActivities ? (
+              <div>
+                <p>Volunteering Activity</p>
+                {item.nonWorkRelatedVolunteeringActivities.map(
+                  (nonWorkRelatedVolunteeringActivitiesListItem, index) => (
+                    <li>{nonWorkRelatedVolunteeringActivitiesListItem}</li>
+                  )
+                )}
+              </div>
+            ) : (
+              ""
+            )}
           </div>
         ))}
       </Container>
