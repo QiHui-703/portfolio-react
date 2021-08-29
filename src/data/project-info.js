@@ -9,8 +9,8 @@ const ProjectInfo = [
   {
     id: 2,
     projectTitle: "Portfolio",
-    codingSkill: ["HTML", "CSS", "React", "Material-UI"],
-    websiteURL: "TBC",
+    codingSkill: ["HTML", "CSS", "React", "Material-UI", "Framer Motion"],
+    websiteURL: "#",
   },
 ];
 

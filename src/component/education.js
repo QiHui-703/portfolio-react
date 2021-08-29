@@ -1,4 +1,4 @@
-import { Container, makeStyles } from "@material-ui/core";
+import { Container, makeStyles, Button } from "@material-ui/core";
 import Timeline from "@material-ui/lab/Timeline";
 import TimelineItem from "@material-ui/lab/TimelineItem";
 import TimelineSeparator from "@material-ui/lab/TimelineSeparator";
@@ -23,6 +23,13 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5vh",
     maxWidth: "60rem",
   },
+  h3Custom: {
+    margin: 0,
+  },
+  anchorStyle: {
+    textDecoration: "none",
+    color: "white",
+  },
 }));
 
 function Education() {
@@ -36,14 +43,14 @@ function Education() {
             <Timeline align="alternate">
               <TimelineItem>
                 <TimelineOppositeContent>
-                  <h3>{item.courseDuration}</h3>
+                  <h3 className={classes.h3Custom}>{item.courseDuration}</h3>
                 </TimelineOppositeContent>
                 <TimelineSeparator>
                   <TimelineDot color="primary" />
                   <TimelineConnector />
                 </TimelineSeparator>
                 <TimelineContent>
-                  <p>{item.schoolName}</p>
+                  <p className={classes.h3Custom}>{item.schoolName}</p>
                   <p>{item.courseTitle}</p>
                   <p>{item.grade}</p>
 
@@ -51,18 +58,31 @@ function Education() {
                     ? item.academicAwards.map((item) => <li>{item}</li>)
                     : ""}
 
-                  {item.publicationDetails
-                    ? item.publicationDetails.map((item) => (
+                  {item.publicationDetails ? (
+                    <div>
+                      <h4>Publication</h4>
+                      {item.publicationDetails.map((item) => (
                         <div>
                           <p>{item.articleTitle}</p>
                           <p>
                             Published by {item.publisher},{" "}
                             {item.publicationDate}
                           </p>
-                          <a href={item.reference}>Link to article</a>
+                          <Button variant="contained" color="secondary">
+                            <a
+                              target="_blank"
+                              href={item.reference}
+                              className={classes.anchorStyle}
+                            >
+                              Link to article
+                            </a>
+                          </Button>
                         </div>
-                      ))
-                    : ""}
+                      ))}
+                    </div>
+                  ) : (
+                    ""
+                  )}
                 </TimelineContent>
               </TimelineItem>
             </Timeline>

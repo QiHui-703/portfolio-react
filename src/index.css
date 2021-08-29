@@ -12,3 +12,19 @@ a {
   margin: 0;
   padding: 0;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 7px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgb(182, 171, 158);
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(149, 140, 129);
+}

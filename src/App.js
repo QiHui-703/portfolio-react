@@ -11,6 +11,7 @@ import WorkExperience from "./component/work-experience";
 import homePageInfo from "./data/home-page-info";
 import Header from "./component/header";
 import Footer from "./component/footer";
+import ScrollToTop from "./component/scrollToTop";
 
 function App() {
   const theme = createTheme({
@@ -23,6 +24,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>
+        <ScrollToTop />
         <Switch>
           <Route exact path="/">
             <LandingPage />

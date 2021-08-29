@@ -8,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
 import MenuIcon from "@material-ui/icons/Menu";
-import HomeIcon from "@material-ui/icons/Home";
 import { Container } from "@material-ui/core";
 
 const useStyles = makeStyles((theme) => ({
@@ -38,16 +37,23 @@ const useStyles = makeStyles((theme) => ({
   desktopMenuItem: {
     color: "#000",
     textDecoration: "none",
-    margin: "7px",
-    padding: "6px 3px 0",
+    padding: "5px 7px",
   },
   desktopMenuItemSelected: {
     color: "#000",
     textDecoration: "none",
-    padding: "6px 3px 0",
+    padding: "5px 7px",
     backgroundColor: "#fff",
-    margin: "7px",
     borderRadius: "7px",
+  },
+  desktopHomeMenuItem: {
+    color: "black",
+    display: "flex",
+    justifyItems: "center",
+  },
+  desktopMenuCenter: {
+    display: "flex",
+    justifyItems: "center",
   },
   mobileMenuItem: {
     color: "#000",
@@ -67,11 +73,7 @@ const useStyles = makeStyles((theme) => ({
     textDecoration: "none",
   },
   mobileHomeMenuItem: {
-    paddingLeft: "7px",
     color: "#F7B53B",
-  },
-  desktopHomeMenuItem: {
-    color: "black",
   },
 }));
 
@@ -106,7 +108,6 @@ export default function Header(props) {
 
   function handleClick(url, e) {
     setCurrentPath(url);
-    console.log(e.target.innerText);
     setTitle(e.target.innerText);
   }
 
@@ -136,15 +137,19 @@ export default function Header(props) {
                 ? classes.mobileMenuItemSelected
                 : classes.mobileMenuItem
             }
+            onClick={handleMobileMenuClose}
           >
             {item.title}
           </MenuItem>
         </Link>
       ))}
+
       <Link to="/" className={classes.mobileLink}>
-        <MenuItem className={classes.mobileMenuItem}>
-          <HomeIcon className={classes.mobileHomeMenuItem} />
-          <span className={classes.mobileHomeMenuItem}>Home</span>
+        <MenuItem
+          className={classes.mobileMenuItem}
+          onClick={handleMobileMenuClose}
+        >
+          Home
         </MenuItem>
       </Link>
     </Menu>
@@ -165,25 +170,27 @@ export default function Header(props) {
 
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              {props.info.map((item) => (
-                <Link
-                  onClick={(e) => {
-                    handleClick(item.addressURL, e);
-                  }}
-                  key={item.id}
-                  to={item.addressURL}
-                  className={
-                    currentPath === item.addressURL
-                      ? classes.desktopMenuItemSelected
-                      : classes.desktopMenuItem
-                  }
-                >
-                  {item.title}
+              <div className={classes.desktopMenuCenter}>
+                {props.info.map((item) => (
+                  <Link
+                    onClick={(e) => {
+                      handleClick(item.addressURL, e);
+                    }}
+                    key={item.id}
+                    to={item.addressURL}
+                    className={
+                      currentPath === item.addressURL
+                        ? classes.desktopMenuItemSelected
+                        : classes.desktopMenuItem
+                    }
+                  >
+                    {item.title}
+                  </Link>
+                ))}
+                <Link to="/" className={classes.desktopMenuItem}>
+                  Home
                 </Link>
-              ))}
-              <Link to="/" className={classes.desktopMenuItem}>
-                <HomeIcon className={classes.desktopHomeMenuItem} />
-              </Link>
+              </div>
             </div>
 
             <div className={classes.sectionMobile}>

@@ -6,8 +6,8 @@ const EducationInfo = [
     courseDuration: "March'2014 - December'2017",
     grade: "CGPA: 3.74 (Upper Second Class Honours)",
     academicAwards: [
-      "Dean's List in Process Synthesis and Design, 2017",
-      "Letter of Commendation (2013 - 2017)",
+      "• Dean's List in Process Synthesis and Design, 2017",
+      "• Letter of Commendation (2013 - 2017)",
     ],
     publicationDetails: [
       {
@@ -27,7 +27,7 @@ const EducationInfo = [
     courseTitle: "Foundation in Science and Engineering",
     courseDuration: "March'2013 - December'2013",
     grade: "Course Weightage Average: 84.13",
-    academicAwards: ["Letter of Commendation for each semester"],
+    academicAwards: ["• Letter of Commendation for each semester"],
   },
 ];
 

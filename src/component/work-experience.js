@@ -35,7 +35,7 @@ function WorkExperience() {
             <img
               src={require(`../images/${item.logoReference}`).default}
               alt="company logo"
-              style={{ maxWidth: "250px" }}
+              style={{ maxWidth: "150px" }}
             />
             <p>{item.logo}</p>
             <h2>{item.companyName}</h2>
