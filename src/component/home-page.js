@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import homePageInfo from "../data/home-page-info";
 import { Link } from "react-router-dom";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   mainBox: {
     minHeight: "100vh",
     backgroundColor: "#fff",
@@ -45,7 +45,7 @@ const useStyles = makeStyles({
     fontWeight: "600",
     paddingLeft: "10px",
   },
-});
+}));
 
 const spring = {
   type: "spring",

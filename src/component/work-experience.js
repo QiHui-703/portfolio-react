@@ -8,6 +8,9 @@ const useStyles = makeStyles((theme) => ({
     minHeight: "100vh",
     marginTop: "10vh",
     marginBottom: "10vh",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
   containerStyle: {
     display: "flex",
@@ -22,6 +25,19 @@ const useStyles = makeStyles((theme) => ({
     marginTop: "5vh",
     marginBottom: "5vh",
   },
+  companyLogoStyle: {
+    maxWidth: "150px",
+    [theme.breakpoints.down("sm")]: {
+      maxWidth: "100px",
+    },
+  },
+  marginPaddingReduced: {
+    marginTop: "0.5rem",
+    marginBottom: "0.5rem",
+  },
+  boldSectionTitle: {
+    fontWeight: "700",
+  },
 }));
 
 function WorkExperience() {
@@ -35,15 +51,15 @@ function WorkExperience() {
             <img
               src={require(`../images/${item.logoReference}`).default}
               alt="company logo"
-              style={{ maxWidth: "150px" }}
+              className={classes.companyLogoStyle}
             />
             <p>{item.logo}</p>
-            <h2>{item.companyName}</h2>
-            <h3>{item.jobTitle}</h3>
-            <h3>{item.duration}</h3>
+            <h2 className={classes.marginPaddingReduced}>{item.companyName}</h2>
+            <h3 className={classes.marginPaddingReduced}>{item.jobTitle}</h3>
+            <h3 className={classes.marginPaddingReduced}>{item.duration}</h3>
             {item.technicalSkills ? (
               <div>
-                <p>Technical Skills</p>
+                <p className={classes.boldSectionTitle}>Technical Skills</p>
                 {item.technicalSkills.map((technicalSkillsListItem, index) => (
                   <li>{technicalSkillsListItem}</li>
                 ))}
@@ -54,7 +70,7 @@ function WorkExperience() {
 
             {item.jobResponsibilities ? (
               <div>
-                <p>Job Responsibilities</p>
+                <p className={classes.boldSectionTitle}>Job Responsibilities</p>
                 {item.jobResponsibilities.map(
                   (jobResponsibilitiesListItem, index) => (
                     <li>{jobResponsibilitiesListItem}</li>
@@ -67,7 +83,7 @@ function WorkExperience() {
 
             {item.keyAchievement ? (
               <div>
-                <p>Key Achievements</p>
+                <p className={classes.boldSectionTitle}>Key Achievements</p>
                 {item.keyAchievement.map((keyAchievement, index) => (
                   <li>{keyAchievement}</li>
                 ))}
@@ -78,7 +94,9 @@ function WorkExperience() {
 
             {item.nonWorkRelatedVolunteeringActivities ? (
               <div>
-                <p>Volunteering Activity</p>
+                <p className={classes.boldSectionTitle}>
+                  Volunteering Activity
+                </p>
                 {item.nonWorkRelatedVolunteeringActivities.map(
                   (nonWorkRelatedVolunteeringActivitiesListItem, index) => (
                     <li>{nonWorkRelatedVolunteeringActivitiesListItem}</li>

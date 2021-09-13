@@ -1,78 +1,44 @@
 import { Container, makeStyles, Box, Button, Grid } from "@material-ui/core";
 import ProjectInfo from "../data/project-info";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import { Block } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
-  divStyle: {
+  rootDiv: {
     display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    justifyContent: "center",
+  },
+  divStyle: {
     minHeight: "100vh",
     marginTop: "10vh",
-    marginBottom: "10vh",
-    // backgroundColor: "grey",
-  },
-  containerStyle: {
-    display: "flex",
-    flexDirection: "column",
-    alignSelf: "center",
-    marginTop: "5vh",
-    maxWidth: "60rem",
-  },
-  nestedDivStyle: {
-    textAlign: "center",
+    marginBottom: "15vh",
     maxWidth: "80vw",
-    display: "flex",
-    flexDirection: "row",
-    marginTop: "5vh",
-    marginBottom: "5vh",
-    // backgroundColor: "yellow",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "0.8rem",
+    },
   },
-  projectBox: {
-    // backgroundColor: "green",
-    margin: "10px",
-    minHeight: "300px",
-    paddingTop: "2rem",
-    paddingBottom: "2rem",
-    minWidth: "20rem",
-    maxWidth: "50rem",
-    color: "black",
+  outerDiv: {
+    margin: "5rem 0",
   },
-  projectTitleContainerStyle: {
-    // backgroundColor: "blue",
-    paddingTop: "1.5rem",
-    paddingBottom: "1.5rem",
-  },
-  projectContentStyle: {
-    paddingTop: "1.5rem",
-    paddingBottom: "1.5rem",
+  innerDivStyle: {
+    display: "inline-block",
     textAlign: "center",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    minWidth: "6rem",
+    margin: "1rem 0",
   },
-  skillDiv: {
-    marginBottom: "20px",
-    textAlign: "left",
-    display: "flex",
-    flexDirection: "column",
-    width: "10rem",
+  logoStyle: {
+    maxHeight: "50px",
   },
-  linkButtonURL: {
-    color: "#fff",
+  anchorStyle: {
     textDecoration: "none",
+    color: "white",
   },
-  iconStyle: {
-    paddingRight: "10px",
+  buttonBlock: {
+    display: "block",
   },
-  stackDivStyle: {
+  buttonPosition: {
     display: "flex",
-    justifyItems: "center",
-    paddingTop: "2px",
-    paddingBottom: "2px",
-  },
-  nestedParagraphStyle: {
-    margin: 0,
+    justifyContent: "flex-end",
   },
 }));
 
@@ -80,53 +46,56 @@ function Projects() {
   const classes = useStyles();
 
   return (
-    //grey
-    <Container className={classes.divStyle}>
-      {/* yellow */}
-      <Grid
-        container
-        className={classes.nestedDivStyle}
-        justifyContent="space-around"
-      >
+    <div className={classes.rootDiv}>
+      <div className={classes.divStyle}>
         {ProjectInfo.map((item) => (
-          // green
-          <Grid item>
-            {/* blue */}
-            <Box className={classes.projectBox} boxShadow={3}>
-              <Box className={classes.projectTitleContainerStyle}>
-                <h3>{item.projectTitle}</h3>
-              </Box>
-              <Box>
-                <p>• • • • •</p>
-              </Box>
-              <Box className={classes.projectContentStyle}>
-                <h4>Stack</h4>
-                <div className={classes.skillDiv}>
-                  {item.codingSkill.map((item) => (
-                    <div className={classes.stackDivStyle}>
-                      <CheckCircleIcon
-                        fontSize="small"
-                        className={classes.iconStyle}
-                      />
-                      <p className={classes.nestedParagraphStyle}>{item}</p>
-                    </div>
-                  ))}
-                </div>
-                <Button variant="contained" color="primary">
-                  <a
-                    target="_blank"
-                    href={item.websiteURL}
-                    className={classes.linkButtonURL}
-                  >
-                    Link to webpage
-                  </a>
-                </Button>
-              </Box>
-            </Box>
-          </Grid>
+          <div className={classes.outerDiv}>
+            <h3>{item.projectTitle}</h3>
+            <p>{item.projectDescription}</p>
+            <h4>Stack: </h4>
+            <Grid
+              container
+              direction="row"
+              justifyContent="space-around"
+              alignItems="center"
+            >
+              {item.codingSkill.map((stack) => (
+                <Grid
+                  item
+                  className={classes.innerDivStyle}
+                  spacing={5}
+                  md={4}
+                  lg={3}
+                  xs={6}
+                >
+                  <img
+                    src={require(`../images/${stack.stackLogo}`).default}
+                    alt="stack logo"
+                    className={classes.logoStyle}
+                  />
+                  <p>{stack.stackDescription}</p>
+                </Grid>
+              ))}
+            </Grid>
+            <div className={classes.buttonPosition}>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.buttonBlock}
+              >
+                <a
+                  target="_blank"
+                  href={item.websiteURL}
+                  className={classes.anchorStyle}
+                >
+                  Link to webpage
+                </a>
+              </Button>
+            </div>
+          </div>
         ))}
-      </Grid>
-    </Container>
+      </div>
+    </div>
   );
 }
 

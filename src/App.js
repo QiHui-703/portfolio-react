@@ -13,14 +13,14 @@ import Header from "./component/header";
 import Footer from "./component/footer";
 import ScrollToTop from "./component/scrollToTop";
 
-function App() {
-  const theme = createTheme({
-    typography: {
-      fontFamily: "Roboto Condensed",
-      letterSpacing: "0.1rem",
-    },
-  });
+const theme = createTheme({
+  typography: {
+    fontFamily: "Roboto Condensed",
+    letterSpacing: "0.1rem",
+  },
+});
 
+function App() {
   return (
     <ThemeProvider theme={theme}>
       <Router>

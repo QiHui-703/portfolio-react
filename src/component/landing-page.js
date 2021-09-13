@@ -2,15 +2,21 @@ import { Box, makeStyles } from "@material-ui/core";
 import { motion } from "framer-motion";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
   box: {
     height: "100vh",
   },
   landingPageMainText: {
     fontSize: "3rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2rem",
+    },
   },
   landingPageSubText: {
     fontSize: "2rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
   },
   flexBox: {
     display: "flex",
@@ -28,7 +34,7 @@ const useStyles = makeStyles({
     color: "#BA324F",
     marginTop: "4rem",
   },
-});
+}));
 
 const items = [1, 2, 3];
 

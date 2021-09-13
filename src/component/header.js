@@ -164,7 +164,7 @@ export default function Header(props) {
       >
         <Container maxWidth="lg">
           <Toolbar style={{ padding: 0 }}>
-            <Typography variant="h5" noWrap>
+            <Typography variant="h6" noWrap>
               {title}
             </Typography>
 
